@@ -18,7 +18,7 @@ https://adrianv987.github.io/AV-Web-Studio
 - JavaScript
 
 ## 📸 Preview
-(Add a screenshot of your website here as `preview.png`)
+![Preview](preview.png)
 
 ## 📩 About
 This project was built as part of AV Web Studio to showcase web design work and development capability.
