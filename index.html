@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AV Web Studio — Premium Websites for Australian Businesses</title>
+  <meta name="description" content="AV Web Studio designs and builds modern, custom websites for Australian businesses. Mobile-first, fast, and built to convert." />
+
+  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <!-- Logo — replace "AV" and "Web Studio" with your branding -->
+      <a href="#hero" class="nav-logo">
+        <span class="logo-mark">AV</span>
+        <span class="logo-text">Web Studio</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+      </ul>
+
+      <!-- Hamburger for mobile -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Get In Touch</a></li>
+    </ul>
+  </div>
+
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero">
+    <!-- Animated gradient orbs and subtle grid overlay -->
+    <div class="hero-bg" aria-hidden="true">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="hero-grid-lines"></div>
+    </div>
+
+    <div class="hero-content reveal-hero">
+      <div class="eyebrow">Web Design &amp; Development — Australia</div>
+
+      <h1 class="hero-headline">
+        Websites That Look<br />
+        <em>Premium</em> and Perform
+      </h1>
+
+      <p class="hero-sub">
+        I design and build modern, custom websites for businesses that want to make a
+        strong impression online — from first visit to final conversion.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Start a Project</a>
+      </div>
+
+      <!-- Social proof trust strip -->
+      <div class="hero-trust">
+        <span>Clean Code</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>Mobile-First</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>Built for Results</span>
+        <span class="sep" aria-hidden="true">·</span>
+        <span>Based in Australia</span>
+      </div>
+    </div>
+
+    <!-- Animated scroll indicator -->
+    <div class="scroll-cue" aria-hidden="true">
+      <div class="scroll-line-anim"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================ -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Left: photo + floating stat cards -->
+        <div class="about-visual">
+          <div class="about-img-frame reveal-left">
+            <img
+              src="coding-image.jpg"
+              alt="Web designer working at desk"
+              loading="lazy"
+            />
+            <div class="img-accent-border"></div>
+          </div>
+
+          <!-- <div class="stat-card glass reveal-fade" style="--delay: 0.3s;">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Years Building</div>
+          </div> -->
+          <div class="stat-card stat-card-2 glass reveal-fade" style="--delay: 0.5s;">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Years Building</div>
+          </div>
+        </div>
+
+        <!-- Right: copy -->
+        <div class="about-copy reveal-right">
+          <div class="eyebrow">About Me</div>
+          <h2 class="section-title">You Work Directly With Me — Not a Team, Not a Template</h2>
+
+          <p>Hi, I'm Adrian. I'm a freelance web designer and developer based in Australia, and I build websites that actually do justice to the businesses behind them.</p>
+
+          <p>No cookie-cutter templates. No outsourcing. Just thoughtful design, clean code, and websites that look the part and work properly — on every screen, for every visitor.</p>
+
+          <p>I work with small businesses, professionals, and service providers who want more than a placeholder site — people who take their online presence seriously and want something they're proud to share.</p>
+
+          <a href="#contact" class="btn btn-primary">Let's Talk</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section id="services" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="eyebrow">What I Build</div>
+        <h2 class="section-title">Services</h2>
+        <p class="section-desc">Every project is custom-built from scratch. No page builders, no bloated themes — just clean, purposeful web design.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card glass reveal-up" style="--delay: 0s;">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3>Business Websites</h3>
+          <p>A complete, professional online presence for your business. Designed to build trust and convert visitors into enquiries.</p>
+          <div class="service-tags">
+            <span>Multi-page</span><span>SEO Ready</span><span>Contact Forms</span>
+          </div>
+        </div>
+
+        <div class="service-card glass reveal-up" style="--delay: 0.08s;">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+            </svg>
+          </div>
+          <h3>Landing Pages</h3>
+          <p>High-converting single pages for campaigns, promotions, or products. Focused, fast, and built around one clear goal.</p>
+          <div class="service-tags">
+            <span>Conversion-Focused</span><span>Fast Load</span>
+          </div>
+        </div>
+
+        <div class="service-card glass reveal-up" style="--delay: 0.16s;">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"/>
+              <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            </svg>
+          </div>
+          <h3>Website Refresh</h3>
+          <p>Already have a site that looks outdated? I'll redesign it to feel modern, work on all devices, and reflect where your business is today.</p>
+          <div class="service-tags">
+            <span>Redesign</span><span>Modernise</span><span>Retain SEO</span>
+          </div>
+        </div>
+
+        <div class="service-card glass reveal-up" style="--delay: 0.08s;">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M6 20v-2a6 6 0 0112 0v2"/>
+            </svg>
+          </div>
+          <h3>Personal &amp; Portfolio Sites</h3>
+          <p>A personal brand or portfolio that represents you with clarity and confidence — for professionals, freelancers, or creatives.</p>
+          <div class="service-tags">
+            <span>Personal Brand</span><span>Showcase</span>
+          </div>
+        </div>
+
+        <div class="service-card glass reveal-up" style="--delay: 0.16s;">
+          <div class="service-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <h3>Ongoing Improvements</h3>
+          <p>Need updates, new pages, or regular improvements over time? I offer ongoing support so your website keeps growing with your business.</p>
+          <div class="service-tags">
+            <span>Retainer</span><span>Updates</span><span>Support</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHY WORK WITH ME
+  ============================================================ -->
+  <section id="features" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="eyebrow">Why AV Web Studio</div>
+        <h2 class="section-title">Built Different. Built Better.</h2>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-item reveal-up" style="--delay: 0s;">
+          <div class="feature-num" aria-hidden="true">01</div>
+          <div class="feature-body">
+            <h3>Modern Design</h3>
+            <p>Clean, contemporary aesthetics that position your business as professional and current — not like it's from 2014.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal-up" style="--delay: 0.07s;">
+          <div class="feature-num" aria-hidden="true">02</div>
+          <div class="feature-body">
+            <h3>Mobile-First</h3>
+            <p>Most of your visitors are on their phones. Every site I build is designed for mobile first, then refined for larger screens.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal-up" style="--delay: 0.14s;">
+          <div class="feature-num" aria-hidden="true">03</div>
+          <div class="feature-body">
+            <h3>Fast Performance</h3>
+            <p>No bloated plugins or heavy themes. Lean, optimised code that loads fast and scores well in performance benchmarks.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal-up" style="--delay: 0.21s;">
+          <div class="feature-num" aria-hidden="true">04</div>
+          <div class="feature-body">
+            <h3>Personal Service</h3>
+            <p>You talk directly to me throughout. No account managers, no outsourcing — just a straightforward working relationship.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal-up" style="--delay: 0.28s;">
+          <div class="feature-num" aria-hidden="true">05</div>
+          <div class="feature-body">
+            <h3>Clean Code</h3>
+            <p>Every site is hand-built with clean, well-structured code. Easy to maintain, easy to update, and built to last.</p>
+          </div>
+        </div>
+
+        <div class="feature-item reveal-up" style="--delay: 0.35s;">
+          <div class="feature-num" aria-hidden="true">06</div>
+          <div class="feature-body">
+            <h3>Tailored Builds</h3>
+            <p>Every project starts from scratch. Your website reflects your brand, your audience, and your goals — not a generic mould.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PORTFOLIO / PROJECT SHOWCASE
+  ============================================================ -->
+  <section id="work" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="eyebrow">Selected Work</div>
+        <h2 class="section-title">Recent Projects</h2>
+        <p class="section-desc">A selection of websites built for businesses across different industries.</p>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <!-- Card 1: Drum Tutor -->
+        <div class="portfolio-card reveal-up" style="--delay: 0s;">
+          <div class="portfolio-preview" style="--preview-bg: linear-gradient(135deg, #0d1117 0%, #161b22 40%, #0f3460 100%);">
+            <div class="mock-browser">
+              <div class="mock-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-nav-bar"></div>
+                <div class="mock-hero-strip accent-blue"></div>
+                <div class="mock-text-rows">
+                  <div class="mock-row w-75"></div>
+                  <div class="mock-row w-55"></div>
+                  <div class="mock-row w-40"></div>
+                </div>
+                <div class="mock-card-row">
+                  <div class="mock-mini-card"></div>
+                  <div class="mock-mini-card"></div>
+                  <div class="mock-mini-card"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-meta">
+            <span class="portfolio-tag">Drum Instructor</span>
+            <h3>BPM Drum Academy</h3>
+            <p>A modern, engaging website for a drum instructor. Showcases lessons, student testimonials, and a clear path to booking sessions.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: Café -->
+        <div class="portfolio-card reveal-up" style="--delay: 0.1s;">
+          <div class="portfolio-preview" style="--preview-bg: linear-gradient(135deg, #1a1209 0%, #2d200e 50%, #3d2b11 100%);">
+            <div class="mock-browser">
+              <div class="mock-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-nav-bar"></div>
+                <div class="mock-hero-strip accent-warm"></div>
+                <div class="mock-text-rows">
+                  <div class="mock-row w-65 warm"></div>
+                  <div class="mock-row w-45 warm"></div>
+                </div>
+                <div class="mock-img-row">
+                  <div class="mock-img-block warm-img"></div>
+                  <div class="mock-img-block warm-img"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="portfolio-meta">
+            <span class="portfolio-tag">Food Store</span>
+            <h3>Paige's Pantry</h3>
+            <p>A modern, user-friendly website for an online food store. Featuring product listings, easy navigation, and a seamless experience that brings Paige's Pantry's offerings to life online.</p>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PROCESS
+  ============================================================ -->
+  <section id="process" class="section">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="eyebrow">How It Works</div>
+        <h2 class="section-title">Simple Process, Great Results</h2>
+        <p class="section-desc">Working with me is straightforward. Here's what to expect from first conversation to launch day.</p>
+      </div>
+
+      <div class="process-steps">
+
+        <div class="process-step reveal-up" style="--delay: 0s;">
+          <div class="step-num-wrap">
+            <div class="step-num">01</div>
+            <div class="step-line" aria-hidden="true"></div>
+          </div>
+          <div class="step-content glass">
+            <h3>Discovery</h3>
+            <p>We talk through your business, your goals, who your customers are, and what your site needs to achieve. No forms — just a real conversation.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" style="--delay: 0.1s;">
+          <div class="step-num-wrap">
+            <div class="step-num">02</div>
+            <div class="step-line" aria-hidden="true"></div>
+          </div>
+          <div class="step-content glass">
+            <h3>Design</h3>
+            <p>I create a visual direction that fits your brand. You see how it'll look before a single line of code is written, and we refine until it feels right.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" style="--delay: 0.2s;">
+          <div class="step-num-wrap">
+            <div class="step-num">03</div>
+            <div class="step-line" aria-hidden="true"></div>
+          </div>
+          <div class="step-content glass">
+            <h3>Build</h3>
+            <p>The site is hand-coded — clean, fast, and built for real-world use. Every detail is considered, from loading speed to button placement.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" style="--delay: 0.3s;">
+          <div class="step-num-wrap">
+            <div class="step-num">04</div>
+            <div class="step-line" aria-hidden="true"></div>
+          </div>
+          <div class="step-content glass">
+            <h3>Refine</h3>
+            <p>You review the live site and give feedback. We make adjustments until everything is exactly right — no pressure, no rush.</p>
+          </div>
+        </div>
+
+        <div class="process-step reveal-up" style="--delay: 0.4s;">
+          <div class="step-num-wrap">
+            <div class="step-num">05</div>
+            <!-- No connector line after the last step -->
+          </div>
+          <div class="step-content glass">
+            <h3>Launch</h3>
+            <p>Your site goes live. I handle the technical side — domain setup, hosting, and making sure everything is smooth from day one.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================ -->
+  <section id="testimonials" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="eyebrow">Kind Words</div>
+        <h2 class="section-title">What Clients Say</h2>
+      </div>
+
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card glass reveal-up" style="--delay: 0s;">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote>
+            "Adrian completely transformed our online presence. Our new website feels genuinely premium and we've had multiple clients mention it specifically when they reach out. The process was smooth and he delivered exactly what we discussed."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="--avatar-bg: linear-gradient(135deg, #c8a96e, #8b6d3f);">TK</div>
+            <div class="author-info">
+              <strong>Troy. K</strong>
+              <span>Tutor, BPM Drum Academy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card glass reveal-up" style="--delay: 0.12s;">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote>
+            "We'd been putting off updating our old website for years. Working with Adrian was so easy — he understood what we were going for immediately and the result is something we're genuinely proud to show people."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="--avatar-bg: linear-gradient(135deg, #7fa0b4, #4a6d85);">PK</div>
+            <div class="author-info">
+              <strong>Paige. K</strong>
+              <span>Owner, Paige's Pantry</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card glass reveal-up" style="--delay: 0.24s;">
+          <div class="stars" aria-label="5 out of 5 stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <blockquote>
+            "I needed a personal site that felt professional but not stuffy. Adrian nailed the balance — it looks high-end, it's fast, and within a week of going live I'd already had two new clients reach out through it."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="--avatar-bg: linear-gradient(135deg, #b89a7a, #6b4e35);">IV</div>
+            <div class="author-info">
+              <strong>Isaac. V</strong>
+              <span>Entrepreneur</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FINAL CTA
+  ============================================================ -->
+  <section id="contact" class="section cta-section">
+    <div class="cta-bg" aria-hidden="true">
+      <div class="cta-orb cta-orb-1"></div>
+      <div class="cta-orb cta-orb-2"></div>
+    </div>
+
+    <div class="container">
+      <div class="cta-inner reveal-up">
+        <div class="eyebrow">Let's Work Together</div>
+        <h2 class="cta-headline">
+          Ready for a Website That Actually<br />
+          Reflects Your Business?
+        </h2>
+        <p class="cta-desc">
+          Whether you need a brand-new site or an overdue refresh, I'd love to hear about
+          what you're building. Let's have a no-obligation conversation about what's possible.
+        </p>
+
+        <div class="cta-actions">
+          <!-- Replace with your actual email address -->
+          <a href="mailto:avwebstudioau@gmail.com" class="btn btn-primary btn-lg">Get In Touch</a>
+          <div class="cta-email-display">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span>avwebstudioau@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand column -->
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo footer-logo">
+            <span class="logo-mark">AV</span>
+            <span class="logo-text">Web Studio</span>
+          </a>
+          <p>Modern, custom-designed websites for Australian businesses. Built to impress, built to perform.</p>
+          <!-- Social links — update hrefs with real profiles -->
+          <div class="footer-social">
+            <a href="https://au.linkedin.com/in/adrian-viera-aa4639308" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.instagram.com/avwebstudios/" aria-label="Instagram" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <!-- <a href="#" aria-label="X / Twitter" rel="noopener noreferrer" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a> -->
+          </div>
+        </div>
+
+        <!-- Navigation column -->
+        <div class="footer-nav-col">
+          <h4>Navigation</h4>
+          <ul role="list">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services column -->
+        <div class="footer-nav-col">
+          <h4>Services</h4>
+          <ul role="list">
+            <li><a href="#services">Business Websites</a></li>
+            <li><a href="#services">Landing Pages</a></li>
+            <li><a href="#services">Website Refresh</a></li>
+            <li><a href="#services">Portfolio Sites</a></li>
+            <li><a href="#services">Ongoing Support</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact column -->
+        <div class="footer-contact-col">
+          <h4>Get In Touch</h4>
+          <p>Have a project in mind?</p>
+          <!-- Replace with your actual email address -->
+          <a href="mailto:avwebstudioau@gmail.com" class="footer-email">avwebstudioau@gmail.com</a>
+          <p class="footer-location">Based in Australia — working with clients nationwide.</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 AV Web Studio. All rights reserved.</p>
+        <p class="footer-made">Designed &amp; Built in Australia</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
