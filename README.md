@@ -3,7 +3,7 @@
 AV Web Studio is a modern web design studio focused on building modern, clean, and responsive websites for Australian businesses.
 
 ## 🌐 Live Website
-https://adrianv987.github.io/AV-Web-Studio
+https://avwebstudio.com.au/
 
 ## 💼 Services
 - Business websites
