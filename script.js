@@ -183,3 +183,62 @@ const copyrightEl = document.querySelector('.footer-bottom p');
 if (copyrightEl) {
   copyrightEl.textContent = `© ${new Date().getFullYear()} AV Web Studio. All rights reserved.`;
 }
+
+/* ----------------------------------------------------------------
+   9. Contact Form Submission (FormSubmit AJAX)
+---------------------------------------------------------------- */
+
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+
+  const successMessage = document.getElementById('formSuccess');
+  const errorMessage = document.getElementById('formError');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch(
+        'https://formsubmit.co/ajax/adrianv9@outlook.com',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success === 'true') {
+
+        contactForm.reset();
+
+        if (successMessage) {
+          successMessage.style.display = 'block';
+        }
+
+        if (errorMessage) {
+          errorMessage.style.display = 'none';
+        }
+
+      } else {
+        throw new Error('Submission failed');
+      }
+
+    } catch (error) {
+
+      if (successMessage) {
+        successMessage.style.display = 'none';
+      }
+
+      if (errorMessage) {
+        errorMessage.style.display = 'block';
+      }
+
+      console.error(error);
+    }
+  });
+
+}
