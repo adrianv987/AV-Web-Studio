@@ -305,42 +305,25 @@
 
         <!-- Card 1: Drum Tutor -->
         <div class="portfolio-card reveal-up" style="--delay: 0s;">
-          <img src="bpm-preview.png" alt="Screenshot of BPM Drum Academy website" class="portfolio-screenshot" loading="lazy" />
+          <img src="bpm-preview.png" alt="Screenshot of BPM Drum Academy website" class="portfolio-screenshot"
+            loading="lazy" />
           <div class="portfolio-meta">
             <span class="portfolio-tag">Drum Instructor</span>
             <h3>BPM Drum Academy</h3>
-            <p>A modern, engaging website for a drum instructor. Showcases lessons, student testimonials, and a clear
-              path to booking sessions.</p>
+            <p>A modern, user-friendly website for a drum instructor, showcasing lesson programs, student success
+              stories, terms and conditions, and an easy-to-use enquiry system.</p>
           </div>
         </div>
 
         <!-- Card 2: Café -->
         <div class="portfolio-card reveal-up" style="--delay: 0.1s;">
-          <div class="portfolio-preview"
-            style="--preview-bg: linear-gradient(135deg, #1a1209 0%, #2d200e 50%, #3d2b11 100%);">
-            <div class="mock-browser">
-              <div class="mock-dots" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="mock-body">
-                <div class="mock-nav-bar"></div>
-                <div class="mock-hero-strip accent-warm"></div>
-                <div class="mock-text-rows">
-                  <div class="mock-row w-65 warm"></div>
-                  <div class="mock-row w-45 warm"></div>
-                </div>
-                <div class="mock-img-row">
-                  <div class="mock-img-block warm-img"></div>
-                  <div class="mock-img-block warm-img"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img src="ms-preview.png" alt="Screenshot of Mainalign Suspension website" class="portfolio-screenshot"
+            loading="lazy" />
           <div class="portfolio-meta">
-            <span class="portfolio-tag">Food Store</span>
-            <h3>Paige's Pantry</h3>
-            <p>A modern, user-friendly website for an online food store. Featuring product listings, easy navigation,
-              and a seamless experience that brings Paige's Pantry's offerings to life online.</p>
+            <span class="portfolio-tag">Suspension and Wheel Alignment Specialist</span>
+            <h3>Mainalign Suspension</h3>
+            <p>A modern, mobile-responsive website for a suspension and wheel alignment specialist, featuring detailed
+              service pages, a filterable project gallery, customer testimonials, and a streamlined enquiry system.</p>
           </div>
         </div>
 
@@ -445,14 +428,14 @@
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
           <blockquote>
-            "Adrian completely transformed our online presence. Our new website feels genuinely premium and we've had
-            multiple clients mention it specifically when they reach out. The process was smooth and he delivered
-            exactly what we discussed."
+            "Adrian completely transformed our online presence. We didn't have a website before, and what we have now is
+            a huge improvement. It looks professional, modern, and represents our business much better. The whole
+            process was smooth and he delivered exactly what we needed."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" style="--avatar-bg: linear-gradient(135deg, #c8a96e, #8b6d3f);">TK</div>
             <div class="author-info">
-              <strong>Troy. K</strong>
+              <strong>Troy K.</strong>
               <span>Tutor, BPM Drum Academy</span>
             </div>
           </div>
@@ -463,14 +446,14 @@
             <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
           </div>
           <blockquote>
-            "We'd been putting off updating our old website for years. Working with Adrian was so easy — he understood
-            what we were going for immediately and the result is something we're genuinely proud to show people."
+            "We worked one-on-one with AV Web Studio to refresh our existing website. The new design is a big
+            improvement. It's cleaner, easier to navigate, and better reflects our business today."
           </blockquote>
           <div class="testimonial-author">
             <div class="author-avatar" style="--avatar-bg: linear-gradient(135deg, #7fa0b4, #4a6d85);">PK</div>
             <div class="author-info">
-              <strong>Paige. K</strong>
-              <span>Owner, Paige's Pantry</span>
+              <strong>Fernando V.</strong>
+              <span>Mechanic, Mainalign Suspension</span>
             </div>
           </div>
         </div>
@@ -486,7 +469,7 @@
           <div class="testimonial-author">
             <div class="author-avatar" style="--avatar-bg: linear-gradient(135deg, #b89a7a, #6b4e35);">IV</div>
             <div class="author-info">
-              <strong>Isaac. V</strong>
+              <strong>Isaac V.</strong>
               <span>Entrepreneur</span>
             </div>
           </div>
@@ -496,10 +479,11 @@
     </div>
   </section>
 
-
   <!-- ============================================================
-       FINAL CTA
-  ============================================================ -->
+     AV WEB STUDIO — Contact Form
+     Drop this section in place of your existing #contact section.
+     Requires: form-css.css and form.js (loaded after this markup)
+============================================================ -->
   <section id="contact" class="section cta-section">
     <div class="cta-bg" aria-hidden="true">
       <div class="cta-orb cta-orb-1"></div>
@@ -514,87 +498,87 @@
           Reflects Your Business?
         </h2>
 
-        <div class="contact-form-wrap animate-on-scroll">
-          <form class="contact-form" id="contactForm">
+        <div class="contact-form-wrap">
+          <form class="contact-form" id="contactForm" novalidate autocomplete="off">
+            <!-- FormSubmit hidden settings -->
+            <input type="hidden" name="_subject" value="New Website Enquiry — AV Web Studio" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <!-- Honeypot — keep hidden -->
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <!-- FormSubmit Settings -->
-            <input type="hidden" name="_subject" value="New Website Enquiry">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
-
+            <!-- Row 1: Name + Email -->
             <div class="form-row">
               <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" placeholder="Your name" required>
+                <label for="cf-name" class="required">Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="Your name" autocomplete="name" />
+                <span class="field-error" id="cf-name-error" aria-live="polite"></span>
               </div>
 
               <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <label for="cf-email" class="required">Email</label>
+                <input type="email" id="cf-email" name="email" placeholder="your@email.com" autocomplete="email" />
+                <span class="field-error" id="cf-email-error" aria-live="polite"></span>
               </div>
             </div>
 
+            <!-- Row 2: Mobile + Service -->
             <div class="form-row">
               <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="0400 000 000">
+                <label for="cf-mobile" class="required">Mobile Number</label>
+                <input type="tel" id="cf-mobile" name="phone" placeholder="04XX XXX XXX" maxlength="15"
+                  inputmode="numeric" autocomplete="tel" />
+                <span class="field-error" id="cf-mobile-error" aria-live="polite"></span>
               </div>
+
               <div class="form-group">
-                <label for="business_name">Business Name</label>
-                <input type="text" id="business_name" name="business_name" placeholder="Your business name">
+                <label for="cf-service" class="required">What do you need?</label>
+                <select id="cf-service" name="service">
+                  <option value="" disabled selected>Select a service…</option>
+                  <option value="Business Website">Business Website</option>
+                  <option value="Landing Page">Landing Page</option>
+                  <option value="Website Refresh">Website Refresh</option>
+                  <option value="Not Sure Yet">Not Sure Yet</option>
+                </select>
+                <span class="field-error" id="cf-service-error" aria-live="polite"></span>
               </div>
             </div>
 
+            <!-- Row 3: Message -->
             <div class="form-group">
-              <label for="service">What do you need?</label>
-              <select id="service" name="service">
-                <option value="" disabled selected>Select a service...</option>
-                <option value="Business Website">Business Website</option>
-                <option value="Landing Page">Landing Page</option>
-                <option value="Website Refresh">Website Refresh</option>
-                <option value="Not Sure Yet">Not Sure Yet</option>
-              </select>
+              <label for="cf-message" class="required">Tell me about your project</label>
+              <textarea id="cf-message" name="message" rows="6"
+                placeholder="Tell me about your business, your goals, and what you'd like your website to achieve…"></textarea>
+              <span class="field-error" id="cf-message-error" aria-live="polite"></span>
             </div>
 
-            <div class="form-group">
-              <label for="message">Tell me about your project *</label>
-              <textarea id="message" name="message" rows="6"
-                placeholder="Tell me about your business, your goals, and what you'd like your website to achieve..."
-                required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-full">
-              <span>Send Enquiry</span>
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-full" id="cf-submit">
+              <span class="btn-label">Send Enquiry</span>
+              <svg class="btn-spinner" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <path
+                  d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+              </svg>
             </button>
 
-            <p class="form-success" id="formSuccess" style="display:none;">
-              Thanks for reaching out. I'll get back to you as soon as possible.
-            </p>
+            <!-- Success banner (revealed on send) -->
+            <div class="cf-success-banner" id="cf-success" aria-live="polite" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <div>
+                <strong>Message sent!</strong>
+                <span>Thanks for reaching out — I'll get back to you as soon as possible.</span>
+              </div>
+            </div>
 
-            <p class="form-error" id="formError" style="display:none;">
-              Something went wrong. Please try again.
-            </p>
-
-            <p class="form-note">
-              No obligation, no pressure — just a conversation about your project.
-            </p>
-
+            <p class="form-note">No obligation, no pressure — just a conversation about your project.</p>
           </form>
-
-
         </div>
-
-
-        <!-- <div class="cta-actions">
-          <a href="mailto:avwebstudioau@gmail.com" class="btn btn-primary btn-lg">Get In Touch</a>
-          <div class="cta-email-display">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <span>avwebstudioau@gmail.com</span>
-          </div>
-        </div> -->
       </div>
     </div>
   </section>
@@ -664,7 +648,7 @@
           <h4>Get In Touch</h4>
           <p>Have a project in mind?</p>
           <!-- Replace with your actual email address -->
-          <a href="mailto:avwebstudioau@gmail.com" class="footer-email">avwebstudioau@gmail.com</a>
+          <a href="mailto:avwebstudio@outlook.com" class="footer-email">avwebstudio@outlook.com</a>
           <p class="footer-location">Based in Australia.</p>
         </div>
 

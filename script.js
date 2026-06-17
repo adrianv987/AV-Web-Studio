@@ -184,61 +184,294 @@ if (copyrightEl) {
   copyrightEl.textContent = `© ${new Date().getFullYear()} AV Web Studio. All rights reserved.`;
 }
 
+/**
+ * AV Web Studio — form.js
+ *
+ * Self-contained contact form handler.
+ * - Custom JS validation (no browser popups — form has novalidate)
+ * - Inline animated error messages
+ * - Live error clearing on input / blur after first error
+ * - Loading / sent / error button states with spinner
+ * - Success banner reveal on submit
+ * - Async fetch to FormSubmit (AJAX endpoint)
+ *
+ * Assumes form.html markup and form-css.css are already present.
+ * Load this script at the bottom of <body> or with defer.
+ */
+
+'use strict';
+
 /* ----------------------------------------------------------------
-   9. Contact Form Submission (FormSubmit AJAX)
+   FormSubmit endpoint — replace EMAIL with your actual address
 ---------------------------------------------------------------- */
+const FORM_SUBMIT_URL = 'https://formsubmit.co/ajax/avwebstudio@outlook.com';
 
-const contactForm = document.getElementById('contactForm');
+/* ----------------------------------------------------------------
+   Grab elements
+---------------------------------------------------------------- */
+const form      = document.getElementById('contactForm');
+const submitBtn = document.getElementById('cf-submit');
+const btnLabel  = submitBtn ? submitBtn.querySelector('.btn-label') : null;
+const successBanner = document.getElementById('cf-success');
 
-if (contactForm) {
-
-  const successMessage = document.getElementById('formSuccess');
-  const errorMessage = document.getElementById('formError');
-
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(contactForm);
-
-    try {
-      const response = await fetch(
-        'https://formsubmit.co/ajax/adrianv9@outlook.com',
-        {
-          method: 'POST',
-          body: formData
-        }
-      );
-
-      const result = await response.json();
-
-      if (result.success === 'true') {
-
-        contactForm.reset();
-
-        if (successMessage) {
-          successMessage.style.display = 'block';
-        }
-
-        if (errorMessage) {
-          errorMessage.style.display = 'none';
-        }
-
-      } else {
-        throw new Error('Submission failed');
-      }
-
-    } catch (error) {
-
-      if (successMessage) {
-        successMessage.style.display = 'none';
-      }
-
-      if (errorMessage) {
-        errorMessage.style.display = 'block';
-      }
-
-      console.error(error);
-    }
-  });
-
+if (!form) {
+  // Form not present on this page — exit silently
+  throw new Error('AV form.js: #contactForm not found.');
 }
+
+
+/* ================================================================
+   Field config
+   Each entry maps a field id to its validation rule and
+   the id of the corresponding error <span>.
+================================================================ */
+const FIELDS = [
+  {
+    id:       'cf-name',
+    errorId:  'cf-name-error',
+    label:    'Name',
+    validate: (v) => v.trim().length >= 2 ? null : 'Please enter your full name (at least 2 characters).',
+  },
+  {
+    id:       'cf-email',
+    errorId:  'cf-email-error',
+    label:    'Email',
+    validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? null : 'Please enter a valid email address.',
+  },
+  {
+    id:       'cf-mobile',
+    errorId:  'cf-mobile-error',
+    label:    'Mobile',
+    validate: (v) => {
+      const digits = v.replace(/\D/g, '');
+      return (digits.length >= 10 && digits.length <= 11)
+        ? null
+        : 'Please enter a valid Australian mobile number (10–11 digits).';
+    },
+  },
+  {
+    id:       'cf-service',
+    errorId:  'cf-service-error',
+    label:    'Service',
+    validate: (v) => v !== '' ? null : 'Please select a service.',
+  },
+  {
+    id:       'cf-message',
+    errorId:  'cf-message-error',
+    label:    'Message',
+    validate: (v) => v.trim().length >= 10 ? null : 'Please tell me a little about your project (at least 10 characters).',
+  },
+];
+
+
+/* ================================================================
+   Error helpers
+================================================================ */
+
+/**
+ * Show an inline error for a field.
+ * Marks the input invalid; animates the error span in.
+ */
+function showError(fieldConfig, message) {
+  const el    = document.getElementById(fieldConfig.id);
+  const errEl = document.getElementById(fieldConfig.errorId);
+  if (!el || !errEl) return;
+
+  el.classList.add('field-invalid');
+  el.classList.remove('field-valid');
+  el.setAttribute('aria-invalid', 'true');
+  el.setAttribute('aria-describedby', fieldConfig.errorId);
+
+  errEl.textContent = message;
+  errEl.classList.add('is-visible');
+}
+
+/**
+ * Clear the inline error for a field.
+ */
+function clearError(fieldConfig) {
+  const el    = document.getElementById(fieldConfig.id);
+  const errEl = document.getElementById(fieldConfig.errorId);
+  if (!el || !errEl) return;
+
+  el.classList.remove('field-invalid');
+  el.classList.add('field-valid');
+  el.removeAttribute('aria-invalid');
+  el.removeAttribute('aria-describedby');
+
+  errEl.textContent = '';
+  errEl.classList.remove('is-visible');
+}
+
+/**
+ * Validate a single field.
+ * Returns the error string or null if valid.
+ */
+function validateField(fieldConfig) {
+  const el = document.getElementById(fieldConfig.id);
+  if (!el) return null;
+  const error = fieldConfig.validate(el.value);
+  if (error) {
+    showError(fieldConfig, error);
+  } else {
+    clearError(fieldConfig);
+  }
+  return error;
+}
+
+
+/* ================================================================
+   Live validation listeners
+   Attached after first submission attempt so the form
+   doesn't shout at the user before they've typed anything.
+================================================================ */
+let liveListenersAttached = false;
+
+function attachLiveListeners() {
+  if (liveListenersAttached) return;
+  liveListenersAttached = true;
+
+  FIELDS.forEach((fieldConfig) => {
+    const el = document.getElementById(fieldConfig.id);
+    if (!el) return;
+
+    // Clear on input (while user is typing / selecting)
+    el.addEventListener('input', () => {
+      // Only clear if it's currently in error state
+      if (el.classList.contains('field-invalid')) {
+        validateField(fieldConfig);
+      }
+    });
+
+    // Validate on blur (when user leaves the field)
+    el.addEventListener('blur', () => {
+      if (el.classList.contains('field-invalid') || el.value !== '') {
+        validateField(fieldConfig);
+      }
+    });
+  });
+}
+
+
+/* ================================================================
+   Button state helpers
+================================================================ */
+
+function setLoading() {
+  submitBtn.classList.add('is-loading');
+  submitBtn.disabled = true;
+}
+
+function setSent() {
+  submitBtn.classList.remove('is-loading');
+  submitBtn.classList.add('is-sent');
+  if (btnLabel) {
+    btnLabel.style.fontSize = '';   // restore font size
+    btnLabel.textContent = 'Sent!';
+  }
+}
+
+function setServerError() {
+  submitBtn.classList.remove('is-loading');
+  submitBtn.classList.add('is-error');
+  if (btnLabel) {
+    btnLabel.style.fontSize = '';
+    btnLabel.textContent = 'Something went wrong — try again';
+  }
+
+  // Auto-reset after 4 seconds
+  setTimeout(() => {
+    submitBtn.classList.remove('is-error');
+    submitBtn.disabled = false;
+    if (btnLabel) btnLabel.textContent = 'Send Enquiry';
+  }, 4000);
+}
+
+function resetButton() {
+  submitBtn.classList.remove('is-loading', 'is-sent', 'is-error');
+  submitBtn.disabled = false;
+  if (btnLabel) {
+    btnLabel.style.fontSize = '';
+    btnLabel.textContent = 'Send Enquiry';
+  }
+}
+
+
+/* ================================================================
+   Scroll + focus first invalid field
+================================================================ */
+function focusFirstError() {
+  const firstInvalid = form.querySelector('.field-invalid');
+  if (!firstInvalid) return;
+
+  const offset = 100; // account for fixed nav height
+  const top = firstInvalid.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top, behavior: 'smooth' });
+
+  // Slight delay so scroll completes before focus
+  setTimeout(() => firstInvalid.focus(), 350);
+}
+
+
+/* ================================================================
+   Form submit handler
+================================================================ */
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  // --- Validate all fields ---
+  attachLiveListeners();
+
+  const errors = FIELDS.map((fieldConfig) => validateField(fieldConfig)).filter(Boolean);
+
+  if (errors.length > 0) {
+    focusFirstError();
+    return;
+  }
+
+  // --- All valid — start loading ---
+  setLoading();
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(FORM_SUBMIT_URL, {
+      method: 'POST',
+      body:   formData,
+      // Don't set Content-Type — browser sets it with boundary for FormData
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    // FormSubmit returns { success: "true" } on success
+    if (result.success === 'true' || result.success === true) {
+      setSent();
+      form.reset();
+
+      // Clear any lingering valid/invalid classes
+      FIELDS.forEach((fc) => {
+        const el = document.getElementById(fc.id);
+        if (el) {
+          el.classList.remove('field-valid', 'field-invalid');
+          el.removeAttribute('aria-invalid');
+        }
+      });
+
+      // Show success banner
+      if (successBanner) {
+        successBanner.removeAttribute('hidden');
+        successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } else {
+      throw new Error('FormSubmit returned success: false');
+    }
+
+  } catch (err) {
+    console.error('AV Web Studio contact form error:', err);
+    setServerError();
+  }
+});

@@ -1881,3 +1881,242 @@ grid-template-columns: 1fr;
     padding: var(--sp-3);
   }
 }
+
+
+/* ================================================================
+   AV Web Studio — form-css.css
+   Add-on styles for the enhanced contact form.
+   Assumes style.css variables and base form layout already loaded.
+   ================================================================
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  Required field asterisk
+   2.  Inline error messages
+   3.  Field error state (border + glow)
+   4.  Field live-clearing (valid state)
+   5.  Submit button states (loading / sent / error)
+   6.  Spinner animation
+   7.  Success banner
+   8.  Reduced-motion overrides
+================================================================ */
+
+
+/* ================================================================
+   1. Required field asterisk
+================================================================ */
+label.required::after {
+  content: ' *';
+  color: var(--accent);          /* #c8a96e — matches site primary */
+  font-weight: 600;
+  margin-left: 1px;
+}
+
+
+/* ================================================================
+   2. Inline error messages
+   Animate in with a slide-down + fade using max-height + opacity.
+   Each field has a <span class="field-error"> immediately after
+   the input / select / textarea.
+================================================================ */
+.field-error {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #e05252;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+
+  /* Collapsed state */
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+
+  /* Slide + fade transition */
+  transition:
+    max-height 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity    0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-top 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Visible (JS adds .is-visible) */
+.field-error.is-visible {
+  max-height: 60px;      /* generous ceiling — actual text is ~1 line */
+  opacity: 1;
+  margin-top: 6px;
+}
+
+
+/* ================================================================
+   3. Field error state — red border + glow
+================================================================ */
+.form-group input.field-invalid,
+.form-group select.field-invalid,
+.form-group textarea.field-invalid {
+  border-color: #e05252 !important;
+  box-shadow: 0 0 0 3px rgba(224, 82, 82, 0.15) !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow   0.2s ease;
+}
+
+
+/* ================================================================
+   4. Live-clearing — valid state clears any leftover red tint
+   (applied by JS once field passes validation after first error)
+================================================================ */
+.form-group input.field-valid,
+.form-group select.field-valid,
+.form-group textarea.field-valid {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none !important;
+}
+
+.form-group input.field-valid:focus,
+.form-group select.field-valid:focus,
+.form-group textarea.field-valid:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.15) !important;
+}
+
+
+/* ================================================================
+   5. Submit button states
+================================================================ */
+
+/* Loading state */
+#cf-submit.is-loading {
+  opacity: 0.75;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Sent state */
+#cf-submit.is-sent {
+  background: #3d7a5a;
+  box-shadow: 0 4px 20px rgba(61, 122, 90, 0.35);
+  cursor: default;
+  pointer-events: none;
+}
+
+#cf-submit.is-sent:hover {
+  background: #3d7a5a;
+  box-shadow: 0 4px 20px rgba(61, 122, 90, 0.35);
+  transform: none;
+}
+
+/* Server / network error state */
+#cf-submit.is-error {
+  background: #6b2a2a;
+  box-shadow: 0 4px 20px rgba(224, 82, 82, 0.25);
+  cursor: default;
+  pointer-events: none;
+}
+
+
+/* ================================================================
+   6. Spinner icon (inside the button)
+================================================================ */
+.btn-spinner {
+  display: none;
+  flex-shrink: 0;
+  animation: cfSpin 0.75s linear infinite;
+}
+
+#cf-submit.is-loading .btn-spinner {
+  display: block;
+}
+
+#cf-submit.is-loading .btn-label::after {
+  content: 'Sending…';
+}
+
+/* Hide original text while loading — the ::after pseudo replaces it */
+#cf-submit.is-loading .btn-label {
+  font-size: 0;      /* hide the real text without shifting layout */
+}
+
+#cf-submit.is-loading .btn-label::after {
+  font-size: 0.875rem;   /* --text-sm equivalent */
+  font-weight: 500;
+}
+
+@keyframes cfSpin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+
+/* ================================================================
+   7. Success banner
+================================================================ */
+.cf-success-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 1rem 1.25rem;
+  background: rgba(61, 122, 90, 0.12);
+  border: 1px solid rgba(61, 122, 90, 0.35);
+  border-radius: 12px;
+  color: #7ecfa0;
+  margin-top: 0.25rem;
+  text-align: left;
+
+  /* Hidden by default; JS removes [hidden] to reveal */
+  animation: cfFadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Hide the element properly (JS toggles the hidden attribute) */
+.cf-success-banner[hidden] {
+  display: none;
+}
+
+.cf-success-banner svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #5a9e7a;
+}
+
+.cf-success-banner strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7ecfa0;
+  margin-bottom: 2px;
+}
+
+.cf-success-banner span {
+  font-size: 0.83rem;
+  color: rgba(126, 207, 160, 0.8);
+  line-height: 1.5;
+}
+
+@keyframes cfFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ================================================================
+   8. Reduced-motion overrides
+================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .field-error {
+    transition: none;
+  }
+
+  .btn-spinner {
+    animation: none;
+  }
+
+  .cf-success-banner {
+    animation: none;
+  }
+}
